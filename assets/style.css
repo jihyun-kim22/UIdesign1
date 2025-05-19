@@ -1,5 +1,10 @@
 body	{
-		background: skyblue;
+		background: white;
 		color: red;
-		Font-family : pretendard;
+		Font-family : arial;
+}
+
+.cursive{
+
+		font-family : cursive;
 }
