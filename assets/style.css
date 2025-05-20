@@ -1,10 +1,28 @@
+@font-face{
+	font-family: "Codystar";
+	src: url('https://github.com/google/fonts/blob/main/ofl/codystar/Codystar-Regular.ttf?raw=true') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body	{
 		background: white;
-		color: red;
-		Font-family : arial;
+		color: blue;
+		Font-family : Codystar;
+		font-weight : bold;
 }
 
 .cursive{
 
-		font-family : cursive;
+		font-family : arial;
+		font-weight : normal;
+}
+
+a, a:visited {
+  transition: all 500ms ease;
+  color: blue;
+}
+
+a:hover {
+  color: orangered;  
 }
