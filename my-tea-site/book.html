@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tea Book</title>
+  <link rel="stylesheet" href="book.css">
+</head>
+<body>
+  <div class="toc">
+    <button data-page="1">春</button>
+    <button data-page="18">夏</button>
+    <button data-page="34">秋</button>
+    <button data-page="48">冬</button>
+  </div>
+  <div class="book-wrapper">
+    <div class="book-container" id="bookContainer">
+      <div class="book" id="book">
+        <!-- JS에서 페이지 삽입 -->
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button id="prev">&lt;</button>
+      <button id="next">&gt;</button>
+    </div>
+  </div>
+
+  <!-- 📌 페이지 번호 표시 -->
+  <div id="pageIndicator">1 / 70</div>
+
+  <script src="book.js"></script>
+  
+</body>
