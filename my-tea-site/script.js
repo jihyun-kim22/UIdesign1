@@ -132,7 +132,7 @@ showDrawingBtn.addEventListener("click", () => {
 let outlineCount = 0;  // 실루엣과 텍스트 생성 횟수를 추적하는 변수
 const texts = ["book", "face", "about"];  // 실루엣에 나타날 텍스트 배열
 
-// 팝업 닫기 시
+// 팝업 닫기 시 첫 번째 실루엣과 'book' 텍스트 추가
 popup.addEventListener("click", () => {
   popup.classList.remove("show");
   popupContent.classList.remove("show");
@@ -142,40 +142,78 @@ popup.addEventListener("click", () => {
 
   const outline = document.createElement("div");
   outline.className = "popup-outline organic-outline";
+  outline.style.display = "flex";
+  outline.style.alignItems = "center";
+  outline.style.justifyContent = "center";
   outline.style.left = `${rect.left}px`;
   outline.style.top = `${rect.top}px`;
   outline.style.width = `${rect.width}px`;
   outline.style.height = `${rect.height}px`;
 
-  document.body.appendChild(outline);
-
   // 텍스트 추가
-  const text = document.createElement("div");
+  const text = document.createElement("a");
   text.className = "book-text";
   text.textContent = texts[outlineCount];  // 순차적으로 텍스트 설정
-  text.style.position = "absolute";
-  text.style.top = "50%";
-  text.style.left = "50%";
-  text.style.transform = "translate(-50%, -50%)";  // 중앙 정렬
   text.style.fontSize = "16px";
-  text.style.color = "#333";
-  text.style.cursor = "pointer";
+  text.style.color = "#333";  // 기본 텍스트 색상
+  text.style.cursor = "pointer";  // 클릭 가능 표시
+  text.href = "book.html";  // 링크 설정
+  text.style.pointerEvents = "auto";  // 링크 설정
 
-  // 텍스트 클릭 시 로컬 파일로 이동
-text.addEventListener("click", () => {
-  const links = [
-    "file:///C:/users/annam/%EC%9B%90%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C/%EB%AC%B8%EC%84%9C/Github/UIdesign1/my-tea-site/book.html",   // 첫 번째 실루엣 클릭 시 이동
-    "file:///C:/path/to/your/face-file.html",   // 두 번째 실루엣 클릭 시 이동
-    "file:///C:/path/to/your/about-file.html"   // 세 번째 실루엣 클릭 시 이동
-  ];
-  window.location.href = links[outlineCount];  // 로컬 파일로 이동
+  // 텍스트 클릭 시 각 동작을 다르게 처리
+text.addEventListener("click", (event) => {
+  if (text.textContent === "book") {
+    // 'book' 텍스트를 클릭했을 때 새 윈도우에서 book.html 열기
+    event.preventDefault();  // 기존 링크 이동 방지
+    window.open("book.html", "_blank", "width=800,height=600");  // 새 창 열기
+  } else if (text.textContent === "face") {
+    // 'face' 텍스트를 클릭했을 때 드로잉 이미지 띄우기
+    event.preventDefault();  // 기본 동작 방지 (링크 이동 방지)
+    createFaceDrawings();  // face 드로잉 생성 함수 호출
+  } else if (text.textContent === "about") {
+    // 'about' 텍스트를 클릭했을 때 타자기처럼 글자가 나오도록 하기
+    event.preventDefault();  // 기본 동작 방지 (링크 이동 방지)
+    
+    // 실루엣 생성 (이미 만들어놓은 실루엣을 사용하는 것과 동일)
+    const rect = popupContent.getBoundingClientRect();
+    const outline = document.createElement("div");
+    outline.className = "popup-outline organic-outline";
+    outline.style.left = `${rect.left}px`;
+    outline.style.top = `${rect.top}px`;
+    outline.style.width = `${rect.width}px`;
+    outline.style.height = `${rect.height}px`;
+    outline.style.position = "absolute";
+    
+    document.body.appendChild(outline);  // 화면에 실루엣 추가
+    
+    // 타자기 효과로 글자 나오게 하기
+    const infoText = document.createElement("div");
+    infoText.className = "about-text";
+    infoText.innerHTML = "Jihyun Kim <br> Illustration + UI design programming <br> DDA | 2025.";
+
+    outline.appendChild(infoText);  // 실루엣에 텍스트 추가
+
+    // 타자기 효과를 위한 스타일 추가
+    let index = 0;
+    const textContent = infoText.innerText;
+    infoText.innerText = ""; // 시작 시 빈 텍스트로 설정
+
+    const typingEffect = () => {
+      if (index < textContent.length) {
+        infoText.innerText += textContent[index];
+        index++;
+        setTimeout(typingEffect, 100); // 글자 간 간격
+      }
+    };
+
+    typingEffect();
+  }
 });
 
-  outline.appendChild(text);  // 실루엣에 텍스트 추가
   document.body.appendChild(outline);  // 화면에 실루엣 추가
+  outline.appendChild(text);  // 실루엣에 텍스트 추가
 
   outlineCount++;  // 다음 실루엣으로
-
 
   // ✅ 기존 키워드 초기화
   const fixedEls = document.querySelectorAll(".keyword.fixed");
@@ -188,3 +226,49 @@ text.addEventListener("click", () => {
   fixedKeywords.clear();
   showDrawingBtn.style.display = "none";
 });
+
+// "face" 텍스트 클릭 시 드로잉 이미지들이 화면에 랜덤하게 나타나게 하는 함수
+function createFaceDrawings() {
+  // 드로잉 관련 이미지 배열 (faces 폴더 내의 이미지 경로)
+  const faceDrawings = [];
+  for (let i = 1; i <= 31; i++) {
+    faceDrawings.push(`faces/face${i}.png`);
+  }
+
+  // 드로잉 이미지를 랜덤하게 생성하는 함수
+  function createRandomDrawing() {
+    const drawing = document.createElement("img");
+    drawing.className = "face-drawing";  // 클래스를 지정하여 CSS에서 스타일을 추가할 수 있습니다
+    drawing.src = faceDrawings[Math.floor(Math.random() * faceDrawings.length)];
+    drawing.style.position = "absolute";
+    drawing.style.left = `${Math.random() * 100}vw`;  // 화면의 랜덤 위치
+    drawing.style.top = `${Math.random() * 100}vh`;  // 화면의 랜덤 위치
+    drawing.style.opacity = "0";
+    drawing.style.transition = "opacity 1s ease-out, transform 1s ease-out"; // 애니메이션 효과
+
+    document.body.appendChild(drawing);
+
+    // 애니메이션: 1초 후 드로잉을 부드럽게 나타나게
+    setTimeout(() => {
+      drawing.style.opacity = "1";
+      drawing.style.transform = "scale(1)";  // 크기 조정 (선택적)
+    }, 50);
+
+    // 드로잉이 일정 시간 후 사라지게
+    setTimeout(() => {
+      drawing.style.opacity = "0";  // 부드럽게 사라지게
+      setTimeout(() => drawing.remove(), 1000);  // 1초 후에 요소를 제거
+    }, 3000);  // 3초 후에 사라지도록 설정
+  }
+
+  // 드로잉 생성 반복 (예: 5번 생성)
+  let count = 5;  // 드로잉을 몇 개 띄울지 설정 (예: 5개)
+  const interval = setInterval(() => {
+    if (count > 0) {
+      createRandomDrawing();  // 드로잉 하나 생성
+      count--;
+    } else {
+      clearInterval(interval);  // 5개 드로잉이 다 나타나면 interval 종료
+    }
+  }, 500);  // 0.5초 간격으로 드로잉을 화면에 추가
+}
