@@ -23,8 +23,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // 페이지 삽입
   spreads.forEach(group => {
     const spreadDiv = document.createElement('div');
-    spreadDiv.className = 'spread';
-    spreadDiv.style.width = (group.length === 2) ? '3496px' : '1748px';
+    spreadDiv.className = 'spread';  // Spread 클래스 추가
+
+    // 양면 페이지일 때만 'two-pages' 클래스를 추가하여 세로선 표시
+    if (group.length === 2) {
+      spreadDiv.classList.add('two-pages');
+      spreadDiv.style.width = '3496px';  // 양면 페이지
+    } else {
+      spreadDiv.style.width = '1748px';  // 단면 페이지
+    }
     spreadDiv.style.height = '2480px';
 
     group.forEach(i => {
@@ -44,35 +51,24 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function updateView() {
-  const spreadsDom = document.querySelectorAll('.spread');
-  spreadsDom.forEach((el, i) => {
-    el.classList.remove('visible');
-  });
-  spreadsDom[currentSpread].classList.add('visible');
+    const spreadsDom = document.querySelectorAll('.spread');
+    spreadsDom.forEach((el, i) => {
+      el.classList.remove('visible');
+    });
+    spreadsDom[currentSpread].classList.add('visible');
 
-  bookContainer.style.width = (spreads[currentSpread].length === 2) ? '3496px' : '1748px';
-  bookContainer.style.height = '2480px';
+    bookContainer.style.width = (spreads[currentSpread].length === 2) ? '3496px' : '1748px';
+    bookContainer.style.height = '2480px';
 
-  // 페이지 번호 업데이트
-  const visiblePages = spreads[currentSpread];
-  const pageText = visiblePages.length === 1
-    ? ` ${visiblePages[0]} / ${totalPages}`
-    : ` ${visiblePages[0]}-${visiblePages[1]} / ${totalPages}`;
-  if (pageIndicator) {
-    pageIndicator.textContent = pageText;
-    // 목차 버튼 클릭 → 해당 페이지로 이동
-document.querySelectorAll(".toc button").forEach(button => {
-  button.addEventListener("click", () => {
-    const targetPage = parseInt(button.dataset.page);
-    const targetIndex = spreads.findIndex(group => group.includes(targetPage));
-    if (targetIndex !== -1) {
-      currentSpread = targetIndex;
-      updateView();
+    // 페이지 번호 업데이트
+    const visiblePages = spreads[currentSpread];
+    const pageText = visiblePages.length === 1
+      ? ` ${visiblePages[0]} / ${totalPages}`
+      : ` ${visiblePages[0]}-${visiblePages[1]} / ${totalPages}`;
+    if (pageIndicator) {
+      pageIndicator.textContent = pageText;
     }
-  });
-});
   }
-}
 
   document.getElementById('next').addEventListener('click', () => {
     if (currentSpread < spreads.length - 1) {
@@ -98,4 +94,3 @@ document.addEventListener("keydown", function (event) {
     document.getElementById("prev").click();
   }
 });
-

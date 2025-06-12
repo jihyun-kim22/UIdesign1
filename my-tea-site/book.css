@@ -55,6 +55,19 @@ body {
 
 .spread {
   display: flex;
+  position: relative;  /* 위치 기준으로 설정 */
+}
+
+.spread.two-pages:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background-color: #000;
+  transform: translateX(-50%);
+  display: block;
 }
 
 .page {
