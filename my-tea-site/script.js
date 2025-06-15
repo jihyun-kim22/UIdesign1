@@ -189,7 +189,7 @@ text.addEventListener("click", (event) => {
     // 타자기 효과로 글자 나오게 하기
     const infoText = document.createElement("div");
     infoText.className = "about-text";
-    infoText.innerHTML = "Jihyun Kim <br> Illustration + UI design programming <br> DDA | 2025.";
+    infoText.innerHTML = "Jihyun Kim <br> Illustration + UI design programming <br>2025.";
 
     outline.appendChild(infoText);  // 실루엣에 텍스트 추가
 
@@ -272,3 +272,28 @@ function createFaceDrawings() {
     }
   }, 500);  // 0.5초 간격으로 드로잉을 화면에 추가
 }
+
+
+const siteTitle = document.getElementById("site-title");
+const subtitle = document.getElementById("site-subtitle");
+const typingText = "ㄴ  이것은 차에 관한 페이지, 그림, 작업, 김지현의 생각";
+
+let typingStarted = false;
+
+siteTitle.addEventListener("click", () => {
+  if (typingStarted) return;  // 이미 시작되었으면 다시 실행 X
+  typingStarted = true;
+
+  let index = 0;
+  subtitle.textContent = "";
+
+  const typeNext = () => {
+    if (index < typingText.length) {
+      subtitle.textContent += typingText[index];
+      index++;
+      setTimeout(typeNext, 100); // 글자당 100ms
+    }
+  };
+
+  typeNext();
+});
