@@ -276,7 +276,7 @@ function createFaceDrawings() {
 
 const siteTitle = document.getElementById("site-title");
 const subtitle = document.getElementById("site-subtitle");
-const typingText = "ㄴ  이것은 차에 관한 페이지, 그림, 작업, 김지현의 생각";
+const typingText = "ㄴ  이것은 차에 관한 기억, 그림, 페이지, 지나가는 얼굴들, 김지현의 생각";
 
 let typingStarted = false;
 
