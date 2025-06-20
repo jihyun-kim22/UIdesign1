@@ -12,6 +12,7 @@
 
 .scale-wrapper {
   transform: scale(0.5); /* 원하는 비율 */
+  transforn: absolute;
   transform-origin: top center;
   width: 600%; /* 비율 줄였으므로 넓이 늘려서 중앙 정렬 유지 */
   height: 200%;
