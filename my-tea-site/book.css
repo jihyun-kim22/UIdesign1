@@ -13,7 +13,9 @@
 .zoom-wrapper {
   transform: scale(0.5); /* 원하는 비율로 조절 */
   transform-origin: top center;
-  width: 100%;
+  width: 200vw; /* 확대된 영역을 커버 */
+  height: 200vh;
+  position: relative;
 }
 
 body {
