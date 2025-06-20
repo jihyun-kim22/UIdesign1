@@ -19,7 +19,6 @@
 body {
   margin: 0;
   background: #000000;
-  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -31,7 +30,7 @@ body {
 .toc {
   font-family: 'NEXON Lv1 Gothic OTF';
   font-weight: 400;
-  position: fixed;
+  position: absolute;
   top: 30px;
   left: 30px;
   display: flex;
@@ -75,7 +74,7 @@ body {
 
 .spread {
   display: flex;
-  position: relative;  /* 위치 기준으로 설정 */
+  position: absolute;  /* 위치 기준으로 설정 */
 }
 
 .spread.two-pages:before {
@@ -141,7 +140,7 @@ button:hover {
 }
 
 #pageIndicator {
-  position: fixed;
+  position: absolute  ;
   right: 30px;
   bottom: 30px;
   padding: 12px 24px;
@@ -173,7 +172,7 @@ button:hover {
 }
 
 .container {
-  position: relative;
+  position: absolute;
   width: 80vw;  /* 화면 너비의 80% */
   height: calc(80vw * 9 / 16);  /* 16:9 비율 */
   background: #fff;
@@ -208,7 +207,7 @@ body.winter {
 }
 
 #season-bg {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
@@ -230,7 +229,7 @@ body.winter {
 
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
