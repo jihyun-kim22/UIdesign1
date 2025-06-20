@@ -29,6 +29,7 @@ body {
 
 .toc {
   font-family: 'NEXON Lv1 Gothic OTF';
+  transform: scale(0.5);
   font-weight: 400;
   position: fixed;
   top: 30px;
