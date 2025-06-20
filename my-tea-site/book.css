@@ -30,9 +30,11 @@ body {
 }
 
 .toc {
+  transform: scale(0.5);
+  transform-origin: top left;
   font-family: 'NEXON Lv1 Gothic OTF';
   font-weight: 400;
-  position: absolute;
+  position: fixed;
   top: 30px;
   left: 30px;
   display: flex;
@@ -51,7 +53,6 @@ body {
   color: black;
   padding: 12px 24px;
   transition: all 0.3s ease;
-  position: absolute;
 }
 
 .toc button:hover {
