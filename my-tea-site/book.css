@@ -31,7 +31,7 @@ body {
   font-family: 'NEXON Lv1 Gothic OTF';
   transform: scale(0.5);
   font-weight: 400;
-  position: fixed;
+  position: absolute;
   top: 30px;
   left: 30px;
   display: flex;
