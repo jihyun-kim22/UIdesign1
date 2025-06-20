@@ -10,13 +10,6 @@
   font-weight: 400;
 }
 
-.scale-wrapper {
-  transform: scale(0.5); /* 원하는 비율 */
-  transform-origin: top center;
-  width: 600%; /* 비율 줄였으므로 넓이 늘려서 중앙 정렬 유지 */
-  height: 200%;
-}
-
 body {
   margin: 0;
   background: #000000;
@@ -30,8 +23,6 @@ body {
 }
 
 .toc {
-  transform: scale(0.5);
-  transform-origin: top left;
   font-family: 'NEXON Lv1 Gothic OTF';
   font-weight: 400;
   position: fixed;
