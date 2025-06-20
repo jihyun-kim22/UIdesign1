@@ -7,42 +7,39 @@
   <link rel="stylesheet" href="book.css">
 </head>
 <body>
-  <div class="zoom-wrapper">
-    <!-- 🔸 SVG 블러 배경 -->
-    <div id="season-bg">
-      <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-        <filter id="blur">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
-        </filter>
-        <circle id="season-circle" cx="50" cy="50" r="60" filter="url(#blur)" fill="#f6f6f0" />
-      </svg>
-    </div>
-
-    <!-- 🔸 계절 목차 버튼 -->
-    <div class="toc">
-      <button data-page="1">春</button>
-      <button data-page="18">夏</button>
-      <button data-page="34">秋</button>
-      <button data-page="48">冬</button>
-    </div>
-
-    <!-- 🔸 책 영역 -->
-    <div class="book-wrapper">
-      <div class="book-container" id="bookContainer">
-        <div class="book" id="book">
-          <!-- JS에서 페이지 삽입 -->
-        </div>
-      </div>
-
-      <div class="nav-buttons">
-        <button id="prev">&lt;</button>
-        <button id="next">&gt;</button>
-      </div>
-    </div>
-
-    <!-- 🔸 페이지 번호 -->
-    <div id="pageIndicator">1 / 70</div>
+  <!-- 🔸 SVG 블러 배경 추가 -->
+  <div id="season-bg">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+      <filter id="blur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
+      </filter>
+      <circle id="season-circle" cx="50" cy="50" r="60" filter="url(#blur)" fill="#f6f6f0" />
+    </svg>
   </div>
+
+  <!-- 🔸 계절 목차 버튼 -->
+  <div class="toc">
+    <button data-page="1">春</button>
+    <button data-page="18">夏</button>
+    <button data-page="34">秋</button>
+    <button data-page="48">冬</button>
+  </div>
+
+  <div class="book-wrapper">
+    <div class="book-container" id="bookContainer">
+      <div class="book" id="book">
+        <!-- JS에서 페이지 삽입 -->
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button id="prev">&lt;</button>
+      <button id="next">&gt;</button>
+    </div>
+  </div>
+
+  <!-- 페이지 번호 -->
+  <div id="pageIndicator">1 / 70</div>
 
   <script src="book.js"></script>
 </body>
