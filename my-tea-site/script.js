@@ -165,7 +165,7 @@ text.addEventListener("click", (event) => {
   if (text.textContent === "book") {
     // 'book' 텍스트를 클릭했을 때 새 윈도우에서 book.html 열기
     event.preventDefault();  // 기존 링크 이동 방지
-    window.open("book.html", "_blank", "width=1600,height=1000");  // 새 창 열기
+    window.open("book.html", "_blank", "width=800,height=600");  // 새 창 열기
   } else if (text.textContent === "face") {
     // 'face' 텍스트를 클릭했을 때 드로잉 이미지 띄우기
     event.preventDefault();  // 기본 동작 방지 (링크 이동 방지)
