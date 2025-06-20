@@ -11,7 +11,7 @@
 }
 
 .scale-wrapper {
-  transform: scale(0.2); /* 원하는 비율 */
+  transform: scale(0.5); /* 원하는 비율 */
   transform-origin: top center;
 }
 
@@ -31,7 +31,7 @@ body {
   font-family: 'NEXON Lv1 Gothic OTF';
   transform: scale(0.5);
   font-weight: 400;
-  position: absolute;
+  position: fixed;
   top: 30px;
   left: 30px;
   display: flex;
