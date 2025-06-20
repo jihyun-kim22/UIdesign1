@@ -10,16 +10,9 @@
   font-weight: 400;
 }
 
-.zoom-wrapper {
-  transform: scale(0.5); /* 원하는 비율로 조절 */
-  transform-origin: top center;
-  width: 100%;
-}
-
 body {
   margin: 0;
   background: #000000;
-  transform: scale(0.5);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -60,6 +53,7 @@ body {
 
 .book-wrapper {
   margin-top: 50px;
+  transform: scale(0.4); /* ⬅️ 책 크기 축소, 비율 유지 */
   transform-origin: top center;
 }
 
