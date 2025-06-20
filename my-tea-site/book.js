@@ -117,3 +117,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateView(); // 시작 시 초기 표시
 });
+
+window.addEventListener('load', () => {
+  const wrapper = document.querySelector('.book-wrapper');
+
+  function resizeBook() {
+    const viewportWidth = window.innerWidth;
+    const baseWidth = 3496; // 책이 양면일 때 최대 너비
+    const scale = Math.min(viewportWidth / baseWidth, 1); // 너무 크게 확대되진 않게
+
+    wrapper.style.transform = `scale(${scale})`;
+    wrapper.style.transformOrigin = 'top center';
+  }
+
+  resizeBook();
+  window.addEventListener('resize', resizeBook); // 창 크기 바뀔 때도 적용
+});
