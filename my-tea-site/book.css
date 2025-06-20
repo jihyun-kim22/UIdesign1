@@ -51,6 +51,7 @@ body {
   color: black;
   padding: 12px 24px;
   transition: all 0.3s ease;
+  position: absolute;
 }
 
 .toc button:hover {
