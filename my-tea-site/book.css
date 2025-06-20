@@ -10,6 +10,11 @@
   font-weight: 400;
 }
 
+.scale-wrapper {
+  transform: scale(0.5); /* 원하는 비율 */
+  transform-origin: top center;
+}
+
 body {
   margin: 0;
   background: #000000;
