@@ -10,10 +10,7 @@
   font-weight: 400;
 }
 
-.scale-wrapper {
-  transform: scale(0.5); /* 원하는 비율 */
-  transform-origin: top center;
-}
+
 
 body {
   margin: 0;
@@ -29,7 +26,6 @@ body {
 
 .toc {
   font-family: 'NEXON Lv1 Gothic OTF';
-  transform: scale(0.5);
   font-weight: 400;
   position: fixed;
   top: 30px;
