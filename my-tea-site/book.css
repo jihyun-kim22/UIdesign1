@@ -10,6 +10,12 @@
   font-weight: 400;
 }
 
+.zoom-wrapper {
+  transform: scale(0.5); /* 원하는 비율로 조절 */
+  transform-origin: top center;
+  width: 100%;
+}
+
 body {
   margin: 0;
   background: #000000;
